@@ -12,19 +12,18 @@ function About() {
       <section className="w-full py-16 md:py-20 border-b border-nutrigo-brown/10 bg-nutrigo-cream">
         <div className="container mx-auto px-6 max-w-5xl text-center space-y-5">
           <h1 className="text-4xl md:text-5xl font-black tracking-tight text-nutrigo-brown">
-            Sobre nós
+            Sobre a NutriGo
           </h1>
 
           <span className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-nutrigo-brown bg-white border border-nutrigo-brown/10 px-5 py-2 rounded-full shadow-sm">
-            Conecte, Conduza e Conquiste
+            Saudável, prático e delicioso
           </span>
 
           <p className="text-lg text-gray-500 leading-relaxed">
-            O CLIX é um sistema de CRM desenvolvido para simplificar a gestão de clientes e
-            trazer mais organização ao dia a dia das equipes. Criado a partir de um projeto
-            acadêmico e da curiosidade de estudantes em aprender e ir além, o CLIX evoluiu
-            com foco na praticidade, oferecendo uma base sólida para centralizar informações,
-            acompanhar relacionamentos e manter dados sempre acessíveis.
+            A NutriGo nasceu para tornar a alimentação saudável simples no dia a dia. Reunimos
+            opções equilibradas, saborosas e práticas, com cardápios pensados por nutricionistas
+            e ingredientes selecionados. Assim, você come bem sem abrir mão de tempo, sabor ou
+            qualidade.
           </p>
         </div>
       </section>
@@ -38,11 +37,9 @@ function About() {
             </h2>
 
             <p className="text-gray-500 leading-relaxed">
-              Simplificar a forma como empresas gerenciam seus relacionamentos com clientes,
-              oferecendo uma ferramenta confiável, intuitiva e eficiente. Trabalhamos para
-              garantir que informações importantes estejam sempre organizadas e disponíveis,
-              permitindo decisões mais rápidas, atendimentos melhores e mais segurança no
-              uso dos dados.
+              Facilitar escolhas saudáveis com refeições prontas, balanceadas e acessíveis.
+              Trabalhamos para entregar variedade, transparência nutricional e uma experiência
+              rápida desde o pedido até a mesa, garantindo praticidade sem comprometer a saúde.
             </p>
           </article>
 
@@ -53,10 +50,9 @@ function About() {
             </h2>
 
             <p className="text-gray-500 leading-relaxed">
-              Acreditamos que uma boa gestão começa com clareza e simplicidade. Nossos valores
-              são guiados pela organização, foco e soluções que fazem sentido no uso real.
-              Valorizamos transparência, eficiência nos processos e o uso responsável da tecnologia
-              como apoio à tomada de decisões e ao crescimento dos negócios.
+              Acreditamos em comida de verdade, com equilíbrio e responsabilidade. Nossos valores
+              são guiados por qualidade dos ingredientes, respeito aos diferentes estilos de vida
+              e transparência nas informações nutricionais, além de um atendimento próximo e humano.
             </p>
           </article>
         </div>
@@ -70,7 +66,7 @@ function About() {
             </h2>
 
             <p className="text-gray-500 max-w-2xl mx-auto">
-              Um time movido por curiosidade, colaboração e vontade constante de evoluir.
+              Um time movido por cuidado, ciência nutricional e paixão por comida de verdade.
             </p>
           </header>
 
