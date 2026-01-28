@@ -11,8 +11,8 @@ function About() {
     <main className="min-h-screen bg-white">
       <section className="w-full py-16 md:py-20 border-b border-nutrigo-brown/10 bg-nutrigo-cream">
         <div className="container mx-auto px-6 max-w-5xl text-center space-y-5">
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-nutrigo-brown">
-            Sobre a NutriGo
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-nutrigo-green">
+            Sobre a Nutri<span className="text-nutrigo-brown">Go</span>
           </h1>
 
           <span className="inline-flex items-center justify-center text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-nutrigo-brown bg-white border border-nutrigo-brown/10 px-5 py-2 rounded-full shadow-sm">
