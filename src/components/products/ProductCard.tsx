@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react' 
 import type Product from '../../models/Product'
 
 interface ProductCardProps {
@@ -14,7 +15,12 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgba(26,26,26,0.08),0_8px_20px_rgba(26,26,26,0.08)]">
       <div className="relative h-48 overflow-hidden">
-        <img className="h-full w-full object-cover" src={product.foto} alt={product.nome} loading="lazy" />
+        <img 
+            className="h-full w-full object-cover" 
+            src={product.foto} 
+            alt={product.nome} 
+            loading="lazy" 
+        />
         {product.saudavel && (
           <span className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-nutrigo-green/95 px-3 py-1.5 text-xs font-bold text-white">
             <span className="h-2 w-2 rounded-full bg-[#f5f6f2]" aria-hidden="true" />
@@ -32,12 +38,15 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="text-xl font-extrabold text-nutrigo-brown">
             {formatPrice(product.preco)}
           </span>
+          
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-nutrigo-green text-xl font-bold text-white shadow-[0_6px_14px_rgba(101,140,72,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_16px_rgba(101,140,72,0.4)]"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-nutrigo-green text-white shadow-[0_6px_14px_rgba(101,140,72,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_16px_rgba(101,140,72,0.4)]"
             aria-label={`Adicionar ${product.nome}`}
           >
-            +
+            
+            <Plus size={20} strokeWidth={3} />
           </button>
+
         </div>
       </div>
     </article>
