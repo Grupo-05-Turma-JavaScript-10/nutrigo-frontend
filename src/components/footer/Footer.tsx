@@ -14,11 +14,13 @@ function Footer() {
       <div className="container mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="flex flex-col gap-4">
-            <img
-              src="https://ik.imagekit.io/k6kki72wv/nutrigo.png"
-              alt="NutriGo Logo"
-              className="h-16 w-auto object-contain self-start"
-            />
+            <Link to="/home" className="transition-transform hover:scale-105 self-start">
+              <img 
+                src="https://ik.imagekit.io/k6kki72wv/nutrigo.png" 
+                alt="NutriGo Logo" 
+                className="h-20 w-auto object-contain" 
+              />
+            </Link>
             <p className="text-sm leading-relaxed opacity-80">
               Tudo o que você deseja em um só lugar, com uma categoria exclusiva
               dedicada à sua alimentação saudável.
@@ -30,7 +32,7 @@ function Footer() {
             <ul className="flex flex-col gap-2 text-sm">
               <li>
                 <Link
-                  to="/"
+                  to="/home"
                   className="hover:text-nutrigo-green transition-colors"
                 >
                   Home
