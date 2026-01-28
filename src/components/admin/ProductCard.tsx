@@ -6,41 +6,77 @@ interface Props {
 
 function ProductCard({ product }: Props) {
   return (
-    <article className="bg-white rounded-lg shadow-sm hover:shadow transition flex flex-col overflow-hidden max-w-sm">
+    <article className="
+      bg-white 
+      rounded-xl 
+      border border-gray-100
+      shadow-sm 
+      hover:shadow-md 
+      hover:-translate-y-0.5 
+      transition-all 
+      duration-200
+      flex flex-col 
+      max-w-sm
+    ">
 
-      <div className="h-24 bg-gray-200 flex items-center justify-center text-xs text-gray-400">
-        {product.foto ? `${product.foto}` : "Sem imagem"}
-      </div>
+      <div className="p-5 flex flex-col flex-1">
 
-      <div className="p-4 flex flex-col flex-1">
-        <div className="flex justify-between items-center mb-1">
-          <h2 className="text-sm font-bold text-gray-800">
+        <div className="flex justify-between items-start gap-2 mb-2">
+          <h2 className="text-sm font-semibold text-gray-800 leading-tight">
             {product.nome}
           </h2>
 
-          {product.saudavel === true && (
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold">
+          {product.saudavel && (
+            <span className="
+              text-[10px] 
+              px-2.5 
+              py-0.5 
+              rounded-full 
+              bg-green-50 
+              text-green-700 
+              font-medium
+              border border-green-200
+            ">
               Saudável
             </span>
           )}
-
         </div>
 
-        <span className="text-sm font-bold mb-3">
+        <span className="text-base font-bold text-gray-900 mb-4">
           R$ {Number(product.preco).toFixed(2)}
         </span>
 
         <div className="flex gap-2 mt-auto">
-          <button className="flex-1 py-1.5 text-xs border rounded-md hover:bg-gray-100">
+          <button className="
+            flex-1 
+            py-2 
+            text-xs 
+            font-medium
+            rounded-lg 
+            border border-gray-200
+            text-gray-700
+            hover:bg-gray-100 
+            transition
+          ">
             Editar
           </button>
-          <button className="flex-1 py-1.5 text-xs bg-red-500 text-white rounded-md hover:brightness-110">
+
+          <button className="
+            flex-1 
+            py-2 
+            text-xs 
+            font-medium
+            rounded-lg 
+            bg-red-100 
+            text-red-700
+            hover:bg-red-200
+            transition
+          ">
             Excluir
           </button>
         </div>
       </div>
-    </article >
+    </article>
   );
 }
-
 export default ProductCard;
