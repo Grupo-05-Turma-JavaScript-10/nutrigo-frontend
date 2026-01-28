@@ -28,7 +28,7 @@ function App() {
       preco: 10.99,
       saudavel: true,
       foto:
-        'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1642339800099-921df1a0a958?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       id: 4,
