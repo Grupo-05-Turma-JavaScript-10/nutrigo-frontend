@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="w-full flex justify-center py-2 bg-nutrigo-cream font-sans sticky top-0 z-50">
       <div className="container flex justify-between items-center mx-8">
         <Link
-          to="/"
+          to="/home"
           className="flex items-center transition-transform hover:scale-105"
         >
           <img
@@ -17,7 +17,7 @@ function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-10 text-gray-500 font-semibold">
-          <Link to="/" className="hover:text-nutrigo-green transition-colors">
+          <Link to="/home" className="hover:text-nutrigo-green transition-colors">
             Home
           </Link>
           <Link
