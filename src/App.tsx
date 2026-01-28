@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer";
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import TermsOfService from "./pages/legal/TermsOfService";
 import CookiePolicy from "./pages/legal/CookiePolicy";
+import HomeHero from "./components/homehero/HomeHero";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Navbar />
       <main className="min-h-screen">
         <Routes>
-          <Route path="/" element={<div>Home</div>} />
+          <Route path="/" element={<HomeHero />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/cookies" element={<CookiePolicy />} />
