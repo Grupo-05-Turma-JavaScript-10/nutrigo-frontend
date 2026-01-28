@@ -14,11 +14,14 @@ function Footer() {
       <div className="container mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="flex flex-col gap-4">
-            <Link to="/home" className="transition-transform hover:scale-105 self-start">
-              <img 
-                src="https://ik.imagekit.io/k6kki72wv/nutrigo.png" 
-                alt="NutriGo Logo" 
-                className="h-20 w-auto object-contain" 
+            <Link
+              to="/home"
+              className="transition-transform hover:scale-105 self-start"
+            >
+              <img
+                src="https://ik.imagekit.io/k6kki72wv/nutrigo.png"
+                alt="NutriGo Logo"
+                className="h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-sm leading-relaxed opacity-80">
@@ -113,15 +116,30 @@ function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-70">
           <p>© 2026 NutriGo. Todos os direitos reservados.</p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="hover:underline">
+            <a
+              href="/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
               Política de Privacidade
-            </Link>
-            <Link to="/terms" className="hover:underline">
+            </a>
+            <a
+              href="/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
               Termos de Serviço
-            </Link>
-            <Link to="/cookies" className="hover:underline">
+            </a>
+            <a
+              href="/cookies"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
               Cookies
-            </Link>
+            </a>
           </div>
         </div>
       </div>
