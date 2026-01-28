@@ -35,12 +35,13 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-6 text-nutrigo-brown">
+          <Link to="/admin">
           <button
             title="Perfil"
             className="hover:opacity-70 transition-opacity cursor-pointer"
           >
             <User size={24} />
-          </button>
+          </button></Link>
 
           <button
             title="Carrinho"
