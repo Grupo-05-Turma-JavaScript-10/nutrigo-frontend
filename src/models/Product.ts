@@ -1,12 +1,11 @@
-import type Category from './Category';
+import type Category from "./Category";
 
 export default interface Product {
   id: number;
-  name: string;
-  description: string;
-  price: number;
-  healthy: boolean;
-  photo: string;
-  categoryId: number;
-  category?: Category | null;
+  nome: string;
+  descricao: string;
+  preco: number;
+  saudavel: boolean;
+  foto: string;
+  categoria?: Category;
 }
