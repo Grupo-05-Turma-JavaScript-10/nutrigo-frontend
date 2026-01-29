@@ -2,9 +2,11 @@ import type Product from "../../models/Product";
 
 interface Props {
   product: Product;
+  onEdit?: (product: Product) => void;
+  onDelete?: (product: Product) => void;
 }
 
-function ProductCard({ product }: Props) {
+function ProductCard({ product, onEdit, onDelete }: Props) {
   return (
     <article className="
       bg-white 
@@ -47,7 +49,7 @@ function ProductCard({ product }: Props) {
         </span>
 
         <div className="flex gap-2 mt-auto">
-          <button className="
+          <button onClick={() => onEdit?.(product)} className="
             flex-1 
             py-2 
             text-xs 
@@ -61,7 +63,7 @@ function ProductCard({ product }: Props) {
             Editar
           </button>
 
-          <button className="
+          <button onClick={() => onDelete?.(product)} className="
             flex-1 
             py-2 
             text-xs 

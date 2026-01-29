@@ -3,12 +3,22 @@ import type Product from "../../models/Product";
 import type Category from "../../models/Category";
 import CategoryCard from "../../components/admin/CategoryCard";
 import ProductAdminCard from "../../components/products/ProductAdminCard";
-import { listCategories, listProducts } from "../../services/Service";
+import CreateProductModal from "../../components/admin/CreateProductModal";
+import CreateCategoryModal from "../../components/admin/CreateCategoryModal";
+import EditProductModal from "../../components/admin/EditProductModal";
+import EditCategoryModal from "../../components/admin/EditCategoryModal";
+import ConfirmDeleteModal from "../../components/admin/ConfirmDeleteModal";
+import { listCategories, listProducts, deleteProduct, deleteCategory } from "../../services/Service";
 
 function Admin() {
   const [view, setView] = useState<"products" | "categories">("products");
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [showCreateProduct, setShowCreateProduct] = useState(false);
+  const [showCreateCategory, setShowCreateCategory] = useState(false);
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<{ type: "product" | "category"; id: number; label: string } | null>(null);
 
   useEffect(() => {
     listProducts(setProducts);
@@ -53,7 +63,13 @@ function Admin() {
           </button>
         </div>
 
-        <button className="px-6 py-2 rounded-md text-sm font-semibold bg-[var(--color-nutrigo-green)] text-white shadow hover:brightness-110 transition">
+        <button
+          onClick={() => {
+            if (view === "products") setShowCreateProduct(true);
+            else setShowCreateCategory(true);
+          }}
+          className="px-6 py-2 rounded-md text-sm font-semibold bg-[var(--color-nutrigo-green)] text-white shadow hover:brightness-110 transition"
+        >
           + Cadastrar {view === "products" ? "Produto" : "Categoria"}
         </button>
       </section>
@@ -72,7 +88,12 @@ function Admin() {
           ) : (
             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {products.map((product) => (
-                <ProductAdminCard key={product.id} product={product} />
+                <ProductAdminCard
+                  key={product.id}
+                  product={product}
+                  onEdit={(p) => setEditingProduct(p)}
+                  onDelete={(p) => setDeleteTarget({ type: "product", id: p.id, label: p.nome })}
+                />
               ))}
             </section>
           )}
@@ -93,11 +114,72 @@ function Admin() {
           ) : (
             <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {categories.map((category) => (
-                <CategoryCard key={category.id} category={category} />
+                <CategoryCard
+                  key={category.id}
+                  category={category}
+                  onEdit={(c) => setEditingCategory(c)}
+                  onDelete={(c) => setDeleteTarget({ type: "category", id: c.id, label: c.descricao })}
+                />
               ))}
             </section>
           )}
         </>
+      )}
+
+      {showCreateProduct && (
+        <CreateProductModal
+          onClose={() => setShowCreateProduct(false)}
+          onCreated={(created) =>
+            setProducts((prev) => [...prev, created])
+          }
+        />
+      )}
+
+      {showCreateCategory && (
+        <CreateCategoryModal
+          onClose={() => setShowCreateCategory(false)}
+          onCreated={(created) =>
+            setCategories((prev) => [...prev, created])
+          }
+        />
+      )}
+
+      {editingProduct && (
+        <EditProductModal
+          product={editingProduct}
+          onClose={() => setEditingProduct(null)}
+          onUpdated={(updated) =>
+            setProducts((prev) => prev.map((p) => (p.id === updated.id ? updated : p)))
+          }
+        />
+      )}
+
+      {editingCategory && (
+        <EditCategoryModal
+          category={editingCategory}
+          onClose={() => setEditingCategory(null)}
+          onUpdated={(updated) =>
+            setCategories((prev) => prev.map((c) => (c.id === updated.id ? updated : c)))
+          }
+        />
+      )}
+
+      {deleteTarget && (
+        <ConfirmDeleteModal
+          title={`Excluir ${deleteTarget.type === "product" ? "Produto" : "Categoria"}`}
+          message={`Tem certeza que deseja excluir "${deleteTarget.label}"? Essa ação não pode ser desfeita.`}
+          onCancel={() => setDeleteTarget(null)}
+          onConfirm={async () => {
+            if (deleteTarget.type === "product") {
+              await deleteProduct(deleteTarget.id);
+              setProducts((prev) => prev.filter((p) => p.id !== deleteTarget.id));
+            } else {
+              await deleteCategory(deleteTarget.id);
+              setCategories((prev) => prev.filter((c) => c.id !== deleteTarget.id));
+            }
+            setDeleteTarget(null);
+          }}
+        />
       )}
     </main>
   );
