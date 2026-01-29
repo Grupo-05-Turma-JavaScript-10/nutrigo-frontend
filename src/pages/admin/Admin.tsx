@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import type Product from "../../models/Product";
 import type Category from "../../models/Category";
 import CategoryCard from "../../components/admin/CategoryCard";
-import { listCategories, listProducts } from "../../services/Service";
 import ProductAdminCard from "../../components/products/ProductAdminCard";
+import { listCategories, listProducts } from "../../services/Service";
 
 function Admin() {
   const [view, setView] = useState<"products" | "categories">("products");
-
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -17,7 +16,7 @@ function Admin() {
   }, []);
 
   return (
-    <main className="w-full min-h-screen px-10 py-10 bg-[var(--color-nutrigo-cream)]">
+    <main className="w-full min-h-screen px-4 sm:px-10 py-10 bg-[var(--color-nutrigo-cream)]">
 
       <section className="mb-12 max-w-3xl">
         <h1 className="text-3xl font-bold text-gray-800 mb-3">
@@ -25,7 +24,7 @@ function Admin() {
         </h1>
         <p className="text-gray-600 leading-relaxed">
           Aqui você pode visualizar, organizar e gerenciar os produtos e
-          categorias disponíveis no sistema.
+          categorias disponíveis.
         </p>
       </section>
 
@@ -71,7 +70,7 @@ function Admin() {
               </p>
             </div>
           ) : (
-            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {products.map((product) => (
                 <ProductAdminCard key={product.id} product={product} />
               ))}
@@ -92,7 +91,7 @@ function Admin() {
               </p>
             </div>
           ) : (
-            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {categories.map((category) => (
                 <CategoryCard key={category.id} category={category} />
               ))}
@@ -103,5 +102,4 @@ function Admin() {
     </main>
   );
 }
-
 export default Admin;

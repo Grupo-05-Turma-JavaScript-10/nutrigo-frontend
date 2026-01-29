@@ -12,12 +12,13 @@ function CategoryCard({ category, onEdit, onDelete }: Props) {
       className="
         bg-white rounded-xl border border-gray-100
         shadow-sm hover:shadow-md transition
-        flex flex-col overflow-hidden max-w-sm
+        flex flex-col overflow-hidden w-full
+        min-h-[180px] sm:min-h-[200px]  // <-- Aumentando a altura
       "
     >
       <div className="p-4 flex flex-col flex-1">
         <div className="flex justify-between items-center mb-2">
-          <h2 className="text-sm font-bold text-gray-800">
+          <h2 className="text-sm sm:text-base font-bold text-gray-800">
             {category.descricao}
           </h2>
         </div>
@@ -26,7 +27,7 @@ function CategoryCard({ category, onEdit, onDelete }: Props) {
           <button
             onClick={() => onEdit?.(category)}
             className="
-              flex-1 py-1.5 text-xs font-medium
+              flex-1 py-1.5 text-xs sm:text-sm font-medium
               border border-gray-300 rounded-md
               text-gray-700
               hover:bg-gray-100 transition
@@ -38,7 +39,7 @@ function CategoryCard({ category, onEdit, onDelete }: Props) {
           <button
             onClick={() => onDelete?.(category)}
             className="
-              flex-1 py-1.5 text-xs font-medium
+              flex-1 py-1.5 text-xs sm:text-sm font-medium
               bg-red-100 text-red-700
               border border-red-200
               rounded-md
