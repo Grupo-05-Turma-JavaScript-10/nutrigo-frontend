@@ -2,9 +2,11 @@ import type Category from "../../models/Category";
 
 interface Props {
   category: Category;
+  onEdit?: (category: Category) => void;
+  onDelete?: (category: Category) => void;
 }
 
-function CategoryCard({ category }: Props) {
+function CategoryCard({ category, onEdit, onDelete }: Props) {
   return (
     <article
       className="
@@ -22,6 +24,7 @@ function CategoryCard({ category }: Props) {
 
         <div className="flex gap-2 mt-auto">
           <button
+            onClick={() => onEdit?.(category)}
             className="
               flex-1 py-1.5 text-xs font-medium
               border border-gray-300 rounded-md
@@ -33,6 +36,7 @@ function CategoryCard({ category }: Props) {
           </button>
 
           <button
+            onClick={() => onDelete?.(category)}
             className="
               flex-1 py-1.5 text-xs font-medium
               bg-red-100 text-red-700
