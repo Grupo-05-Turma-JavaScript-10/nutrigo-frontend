@@ -50,7 +50,7 @@ function Navbar() {
           <Link
             to="/"
             onClick={handleLogoClick}
-            className="flex items-center transition-transform hover:scale-105 md:-ml-23"
+            className="flex items-start transition-transform hover:scale-105 md:-ml-23"
           >
             <img
               src="https://ik.imagekit.io/k6kki72wv/nutrigo.png"
@@ -83,7 +83,7 @@ function Navbar() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-4 md:gap-6 text-nutrigo-brown">
+        <div className="flex items-center  gap-4 md:gap-6 text-nutrigo-brown">
           <Link to="/admin">
             <button
               title="Perfil"
