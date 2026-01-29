@@ -10,7 +10,9 @@ import {
 
 function Footer() {
   return (
-    <footer className="w-full bg-nutrigo-cream text-nutrigo-brown py-12 border-t border-gray-200">
+    <footer className="w-full bg-nutrigo-cream text-nutrigo-brown py-12 relative">
+      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-nutrigo-green to-transparent opacity-60" />
+
       <div className="container mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="flex flex-col gap-4">
@@ -90,19 +92,22 @@ function Footer() {
             <h4 className="font-bold text-lg mb-4">Siga-nos</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/"
+                target="_blank"
                 className="w-10 h-10 bg-nutrigo-brown text-white rounded-full flex items-center justify-center hover:bg-nutrigo-green transition-colors"
               >
                 <FacebookIcon size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/"
+                target="_blank"
                 className="w-10 h-10 bg-nutrigo-brown text-white rounded-full flex items-center justify-center hover:bg-nutrigo-green transition-colors"
               >
                 <InstagramIcon size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/"
+                target="_blank"
                 className="w-10 h-10 bg-nutrigo-brown text-white rounded-full flex items-center justify-center hover:bg-nutrigo-green transition-colors"
               >
                 <YoutubeIcon size={20} />
@@ -111,33 +116,18 @@ function Footer() {
           </div>
         </div>
 
-        <hr className="my-8 border-gray-300" />
+        <div className="my-8 w-full h-px bg-gradient-to-r from-transparent via-nutrigo-green/40 to-transparent" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-70">
           <p>© 2026 NutriGo. Todos os direitos reservados.</p>
           <div className="flex gap-6">
-            <a
-              href="/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
+            <a href="/privacy" className="hover:underline" target="_blank">
               Política de Privacidade
             </a>
-            <a
-              href="/terms"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
+            <a href="/terms" className="hover:underline" target="_blank">
               Termos de Serviço
             </a>
-            <a
-              href="/cookies"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
+            <a href="/cookies" className="hover:underline" target="_blank">
               Cookies
             </a>
           </div>
