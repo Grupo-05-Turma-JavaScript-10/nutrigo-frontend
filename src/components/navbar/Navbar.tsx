@@ -14,6 +14,13 @@ function Navbar() {
     };
   }, [open]);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const handleMenuClick = (e: React.MouseEvent) => {
     setOpen(false);
 
@@ -32,17 +39,18 @@ function Navbar() {
 
   return (
     <nav className="w-full flex justify-center py-2 bg-nutrigo-cream font-sans fixed top-0 left-0 z-50 shadow-sm">
-      <div className="max-w-7xl w-full flex justify-between items-center px-4 md:px-8">
+      <div className="max-w-7xl w-full flex justify-between items-center px-4 sm:px-6 md:px-8 lg:px-16">
         <div className="flex items-center gap-3">
           <button
-            className="md:hidden rounded-md p-2 border border-gray-200"
+            className="md:hidden rounded-md p-2 border border-gray-200 text-gray-500 hover:text-nutrigo-green transition-colors"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
           <Link
             to="/"
-            className="flex items-center transition-transform hover:scale-105"
+            onClick={handleLogoClick}
+            className="flex items-center transition-transform hover:scale-105 md:-ml-23"
           >
             <img
               src="https://ik.imagekit.io/k6kki72wv/nutrigo.png"
@@ -53,7 +61,11 @@ function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-8 lg:gap-10 text-gray-500 font-semibold">
-          <Link to="/" className="hover:text-nutrigo-green transition-colors">
+          <Link
+            to="/"
+            onClick={handleLogoClick}
+            className="hover:text-nutrigo-green transition-colors"
+          >
             Home
           </Link>
           <Link
@@ -100,31 +112,37 @@ function Navbar() {
             className="absolute inset-0 bg-black/40"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute inset-0 bg-nutrigo-cream/95 backdrop-blur-sm flex flex-col items-center justify-center gap-6">
+          <div className="absolute inset-0 bg-nutrigo-cream flex flex-col items-center justify-center gap-8">
             <button
-              className="absolute top-4 left-4 rounded-md p-2 border border-gray-200"
+              className="absolute top-4 left-4 rounded-md p-2 border border-gray-200 bg-white/80 text-gray-500 hover:text-nutrigo-green transition-colors"
               onClick={() => setOpen(false)}
             >
               <X size={20} />
             </button>
+
             <Link
               to="/"
-              onClick={() => setOpen(false)}
-              className="text-2xl font-bold text-[#273024]"
+              onClick={(e) => {
+                setOpen(false);
+                handleLogoClick(e);
+              }}
+              className="text-3xl font-semibold text-gray-500 hover:text-nutrigo-green transition-colors"
             >
               Home
             </Link>
+
             <Link
               to="/#produtos"
               onClick={handleMenuClick}
-              className="text-2xl font-bold text-[#273024]"
+              className="text-3xl font-semibold text-gray-500 hover:text-nutrigo-green transition-colors"
             >
               Menu
             </Link>
+
             <Link
               to="/about"
               onClick={() => setOpen(false)}
-              className="text-2xl font-bold text-[#273024]"
+              className="text-3xl font-semibold text-gray-500 hover:text-nutrigo-green transition-colors"
             >
               Sobre
             </Link>
