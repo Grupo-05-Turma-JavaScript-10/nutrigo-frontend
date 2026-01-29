@@ -4,14 +4,16 @@ import { User, ShoppingCart, Menu, X } from "lucide-react";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [open]);
+
   return (
-    <nav className="w-full flex justify-center py-2 bg-nutrigo-cream font-sans sticky top-0 z-50">
+    <nav className="w-full flex justify-center py-2 bg-nutrigo-cream font-sans fixed top-0 left-0 z-50 shadow-sm">
       <div className="max-w-7xl w-full flex justify-between items-center px-4 md:px-8">
         <div className="flex items-center gap-3">
           <button
@@ -35,10 +37,7 @@ function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-8 lg:gap-10 text-gray-500 font-semibold">
-          <Link
-            to="/"
-            className="hover:text-nutrigo-green transition-colors"
-          >
+          <Link to="/" className="hover:text-nutrigo-green transition-colors">
             Home
           </Link>
           <Link
@@ -57,12 +56,13 @@ function Navbar() {
 
         <div className="flex items-center gap-4 md:gap-6 text-nutrigo-brown">
           <Link to="/admin">
-          <button
-            title="Perfil"
-            className="hover:opacity-70 transition-opacity cursor-pointer"
-          >
-            <User size={22} className="md:h-6 md:w-6" />
-          </button></Link>
+            <button
+              title="Perfil"
+              className="hover:opacity-70 transition-opacity cursor-pointer"
+            >
+              <User size={22} className="md:h-6 md:w-6" />
+            </button>
+          </Link>
 
           <button
             title="Carrinho"
@@ -77,9 +77,13 @@ function Navbar() {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-nutrigo-green/60 to-transparent" />
+
       {open && (
         <div className="fixed inset-0 z-[60] md:hidden">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setOpen(false)}
+          />
           <div className="absolute inset-0 bg-nutrigo-cream/95 backdrop-blur-sm flex flex-col items-center justify-center gap-6">
             <button
               aria-label="Fechar"
