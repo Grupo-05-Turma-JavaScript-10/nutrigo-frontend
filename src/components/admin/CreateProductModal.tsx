@@ -12,6 +12,7 @@ function CreateProductModal({ onClose, onCreated }: Props) {
   const [nome, setNome] = useState("")
   const [descricao, setDescricao] = useState("")
   const [preco, setPreco] = useState<number>(0)
+  const [precoText, setPrecoText] = useState<string>(new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(0))
   const [saudavel, setSaudavel] = useState(false)
   const [foto, setFoto] = useState("")
   const [categoriaId, setCategoriaId] = useState<number | null>(null)
@@ -77,11 +78,18 @@ function CreateProductModal({ onClose, onCreated }: Props) {
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">Preço</label>
               <input
-                type="number"
-                step="0.01"
-                value={preco}
-                onChange={(e) => setPreco(Number(e.target.value))}
+                type="text"
+                value={precoText}
+                onChange={(e) => {
+                  const raw = e.target.value.replace(/\D/g, "")
+                  const cents = raw ? parseInt(raw, 10) : 0
+                  const amount = cents / 100
+                  setPreco(amount)
+                  setPrecoText(new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(amount))
+                }}
                 className="w-full rounded-md border border-gray-300 p-2 text-sm"
+                inputMode="decimal"
+                placeholder="R$ 0,00"
                 required
               />
             </div>
