@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import CategoryFilter from './components/categoryfilter/CategoryFilter';
 import ProductListTest from './components/productlisttest/ProductListTest';
+import HomeHero from "./components/homehero/HomeHero";
 
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import TermsOfService from "./pages/legal/TermsOfService";
@@ -75,6 +76,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
+              <HomeHero />
               <CategoryFilter 
                 onCategoryChange={setSelectedCategory}
                 onHealthyChange={setHealthyOnly}
