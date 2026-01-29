@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import type Product from "../../models/Product";
 import type Category from "../../models/Category";
-import ProductCard from "../../components/admin/ProductCard";
 import CategoryCard from "../../components/admin/CategoryCard";
 import { listCategories, listProducts } from "../../services/Service";
+import ProductAdminCard from "../../components/products/ProductAdminCard";
 
 function Admin() {
   const [view, setView] = useState<"products" | "categories">("products");
@@ -73,7 +73,7 @@ function Admin() {
           ) : (
             <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductAdminCard key={product.id} product={product} />
               ))}
             </section>
           )}
