@@ -19,9 +19,12 @@ function Navbar() {
 
     if (location.pathname === "/") {
       e.preventDefault();
-      document
-        .getElementById("produtos")
-        ?.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const element = document.getElementById("produtos");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } else {
       navigate("/#produtos");
     }
@@ -33,8 +36,6 @@ function Navbar() {
         <div className="flex items-center gap-3">
           <button
             className="md:hidden rounded-md p-2 border border-gray-200"
-            aria-label="Abrir menu"
-            aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
@@ -74,15 +75,14 @@ function Navbar() {
           <Link to="/admin">
             <button
               title="Perfil"
-              className="hover:opacity-70 transition-opacity cursor-pointer"
+              className="hover:opacity-70 transition-opacity"
             >
               <User size={22} className="md:h-6 md:w-6" />
             </button>
           </Link>
-
           <button
             title="Carrinho"
-            className="relative hover:opacity-70 transition-opacity cursor-pointer"
+            className="relative hover:opacity-70 transition-opacity"
           >
             <ShoppingCart size={22} className="md:h-6 md:w-6" />
             <span className="absolute -top-2 -right-2 bg-nutrigo-green text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-nutrigo-cream">
@@ -102,8 +102,7 @@ function Navbar() {
           />
           <div className="absolute inset-0 bg-nutrigo-cream/95 backdrop-blur-sm flex flex-col items-center justify-center gap-6">
             <button
-              aria-label="Fechar"
-              className="absolute top-4 left-4 rounded-md p-2 border border-gray-200 bg-white/80"
+              className="absolute top-4 left-4 rounded-md p-2 border border-gray-200"
               onClick={() => setOpen(false)}
             >
               <X size={20} />
@@ -111,21 +110,21 @@ function Navbar() {
             <Link
               to="/"
               onClick={() => setOpen(false)}
-              className="text-2xl font-bold text-[#273024] hover:text-nutrigo-green transition-colors"
+              className="text-2xl font-bold text-[#273024]"
             >
               Home
             </Link>
             <Link
               to="/#produtos"
               onClick={handleMenuClick}
-              className="text-2xl font-bold text-[#273024] hover:text-nutrigo-green transition-colors"
+              className="text-2xl font-bold text-[#273024]"
             >
               Menu
             </Link>
             <Link
               to="/about"
               onClick={() => setOpen(false)}
-              className="text-2xl font-bold text-[#273024] hover:text-nutrigo-green transition-colors"
+              className="text-2xl font-bold text-[#273024]"
             >
               Sobre
             </Link>

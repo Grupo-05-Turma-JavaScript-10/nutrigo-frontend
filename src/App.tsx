@@ -7,6 +7,7 @@ import Footer from "./components/footer/Footer";
 import CategoryFilter from "./components/categoryfilter/CategoryFilter";
 import ProductListTest from "./components/productlisttest/ProductListTest";
 import HomeHero from "./components/homehero/HomeHero";
+import ScrollToTop from "./components/scroll/ScrollToTop";
 
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
 import TermsOfService from "./pages/legal/TermsOfService";
@@ -20,6 +21,8 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Navbar />
       <main className="min-h-screen bg-nutrigo-cream px-6 pb-12 pt-24 md:pt-32 text-[#2f2f2f] sm:px-8">
         <Routes>
@@ -28,7 +31,6 @@ function App() {
             element={
               <>
                 <HomeHero />
-                {/* O ID foi adicionado nesta div para servir de alvo ao link 'Menu' */}
                 <div id="produtos">
                   <CategoryFilter
                     onCategoryChange={setSelectedCategory}
