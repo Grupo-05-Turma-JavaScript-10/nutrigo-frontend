@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { User, ShoppingCart, Menu, X } from "lucide-react";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -11,6 +13,19 @@ function Navbar() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const handleMenuClick = (e: React.MouseEvent) => {
+    setOpen(false);
+
+    if (location.pathname === "/") {
+      e.preventDefault();
+      document
+        .getElementById("produtos")
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/#produtos");
+    }
+  };
 
   return (
     <nav className="w-full flex justify-center py-2 bg-nutrigo-cream font-sans fixed top-0 left-0 z-50 shadow-sm">
@@ -41,7 +56,8 @@ function Navbar() {
             Home
           </Link>
           <Link
-            to="/menu"
+            to="/#produtos"
+            onClick={handleMenuClick}
             className="hover:text-nutrigo-green transition-colors"
           >
             Menu
@@ -100,8 +116,8 @@ function Navbar() {
               Home
             </Link>
             <Link
-              to="/menu"
-              onClick={() => setOpen(false)}
+              to="/#produtos"
+              onClick={handleMenuClick}
               className="text-2xl font-bold text-[#273024] hover:text-nutrigo-green transition-colors"
             >
               Menu

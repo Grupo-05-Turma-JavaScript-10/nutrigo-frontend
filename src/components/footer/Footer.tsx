@@ -47,7 +47,7 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  to="/menu"
+                  to="/#produtos"
                   className="hover:text-nutrigo-green transition-colors"
                 >
                   Menu

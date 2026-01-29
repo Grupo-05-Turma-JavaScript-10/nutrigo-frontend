@@ -28,14 +28,17 @@ function App() {
             element={
               <>
                 <HomeHero />
-                <CategoryFilter
-                  onCategoryChange={setSelectedCategory}
-                  onHealthyChange={setHealthyOnly}
-                />
-                <ProductListTest
-                  selectedCategory={selectedCategory}
-                  healthyOnly={healthyOnly}
-                />
+                {/* O ID foi adicionado nesta div para servir de alvo ao link 'Menu' */}
+                <div id="produtos">
+                  <CategoryFilter
+                    onCategoryChange={setSelectedCategory}
+                    onHealthyChange={setHealthyOnly}
+                  />
+                  <ProductListTest
+                    selectedCategory={selectedCategory}
+                    healthyOnly={healthyOnly}
+                  />
+                </div>
               </>
             }
           />
