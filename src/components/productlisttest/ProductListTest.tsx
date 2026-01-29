@@ -10,9 +10,12 @@ interface Produto {
   foto: string;      
 }
 
+const PAGE_SIZE = 20
+
 const ProductListTest = ({ selectedCategory, healthyOnly }: { selectedCategory: number | null, healthyOnly: boolean }) => {
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchProdutos = async () => {
@@ -38,9 +41,20 @@ const ProductListTest = ({ selectedCategory, healthyOnly }: { selectedCategory: 
       }
     };
     fetchProdutos();
+    setPage(1);
   }, [selectedCategory, healthyOnly]);
 
+  useEffect(() => {
+    const totalPages = Math.max(1, Math.ceil(produtos.length / PAGE_SIZE))
+    if (page > totalPages) setPage(totalPages)
+  }, [produtos, page])
+
   if (loading) return <div className="text-center py-10">Carregando produtos...</div>;
+
+  const totalPages = Math.max(1, Math.ceil(produtos.length / PAGE_SIZE))
+  const start = (page - 1) * PAGE_SIZE
+  const end = start + PAGE_SIZE
+  const pageItems = produtos.slice(start, end)
 
   return (
     <div className="p-4 max-w-6xl mx-auto">
@@ -49,15 +63,56 @@ const ProductListTest = ({ selectedCategory, healthyOnly }: { selectedCategory: 
         {selectedCategory ? ` na Categoria ${selectedCategory}` : ''}
       </h2>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {produtos.length > 0 ? (
-          produtos.map((produto) => (
+      <div id="products-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {pageItems.length > 0 ? (
+          pageItems.map((produto) => (
             <ProductCard key={produto.id} product={produto as any} />
           ))
         ) : (
           <p className="col-span-full text-center text-gray-500">Nenhum produto encontrado.</p>
         )}
       </div>
+
+      {produtos.length > PAGE_SIZE && (
+        <div className="mt-8 flex flex-col items-center gap-3">
+          <div className="text-sm text-[#4A5565]">
+            Mostrando <span className="font-semibold">{Math.min(end, produtos.length)}</span> de <span className="font-semibold">{produtos.length}</span> produtos
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setPage(1)}
+              disabled={page === 1}
+              className="px-3 py-2 text-sm rounded-md border border-gray-200 bg-white hover:bg-gray-100 disabled:opacity-50"
+            >
+              « Primeiro
+            </button>
+            <button
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={page === 1}
+              className="px-3 py-2 text-sm rounded-md border border-gray-200 bg-white hover:bg-gray-100 disabled:opacity-50"
+            >
+              ‹ Anterior
+            </button>
+            <span className="px-4 py-2 text-sm rounded-full bg-nutrigo-green text-white font-semibold">
+              Página {page} de {totalPages}
+            </span>
+            <button
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={page === totalPages}
+              className="px-3 py-2 text-sm rounded-md border border-gray-200 bg-white hover:bg-gray-100 disabled:opacity-50"
+            >
+              Próxima ›
+            </button>
+            <button
+              onClick={() => setPage(totalPages)}
+              disabled={page === totalPages}
+              className="px-3 py-2 text-sm rounded-md border border-gray-200 bg-white hover:bg-gray-100 disabled:opacity-50"
+            >
+              Última »
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

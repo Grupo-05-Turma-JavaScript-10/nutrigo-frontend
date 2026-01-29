@@ -79,7 +79,7 @@ const CategoryFilter = ({ onCategoryChange, onHealthyChange }: Props) => {
             <select 
               value={selectedCategory || ''}
               onChange={handleCategoryChange}
-              className="w-full p-4 rounded-[10px] bg-[#658c48]/10 border-l-4 border-nutrigo-green text-[#4A5565] appearance-none cursor-pointer font-nutrigo text-base focus:outline-none focus:ring-0"
+              className="w-full p-4 pr-12 rounded-[10px] bg-[#658c48]/10 border-l-4 border-nutrigo-green text-[#4A5565] appearance-none cursor-pointer font-nutrigo text-base focus:outline-none focus:ring-0"
             >
               <option value="">Todas as categorias</option>
               {categorias.map((categoria) => (
@@ -88,7 +88,7 @@ const CategoryFilter = ({ onCategoryChange, onHealthyChange }: Props) => {
                 </option>
               ))}
             </select>
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-[#4A5565]">
+            <div className="absolute inset-y-0 right-6 flex items-center pointer-events-none text-[#4A5565]">
               ▼
             </div>
           </div>
