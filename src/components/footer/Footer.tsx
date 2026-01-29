@@ -10,20 +10,20 @@ import {
 
 function Footer() {
   return (
-    <footer className="w-full bg-nutrigo-cream text-nutrigo-brown py-12 relative">
+    <footer className="w-full bg-nutrigo-cream text-gray-600 py-10 md:py-12 relative flex justify-center">
       <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-nutrigo-green to-transparent opacity-60" />
 
-      <div className="container mx-auto px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="w-full max-w-6xl px-4 md:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
           <div className="flex flex-col gap-4">
             <Link
-              to="/home"
+              to="/"
               className="transition-transform hover:scale-105 self-start"
             >
               <img
                 src="https://ik.imagekit.io/k6kki72wv/nutrigo.png"
                 alt="NutriGo Logo"
-                className="h-20 w-auto object-contain"
+                className="h-16 md:h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-sm leading-relaxed opacity-80">
@@ -33,12 +33,12 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Links Rápidos</h4>
+            <h4 className="font-bold text-lg mb-4 text-[#273024]">Links Rápidos</h4>
             <ul className="flex flex-col gap-2 text-sm">
               <li>
                 <Link
-                  to="/home"
-                  className="hover:text-nutrigo-green transition-colors"
+                  to="/"
+                  className="transition-colors hover:text-nutrigo-green"
                 >
                   Home
                 </Link>
@@ -46,7 +46,7 @@ function Footer() {
               <li>
                 <Link
                   to="/menu"
-                  className="hover:text-nutrigo-green transition-colors"
+                  className="transition-colors hover:text-nutrigo-green"
                 >
                   Menu
                 </Link>
@@ -54,7 +54,7 @@ function Footer() {
               <li>
                 <Link
                   to="/about"
-                  className="hover:text-nutrigo-green transition-colors"
+                  className="transition-colors hover:text-nutrigo-green"
                 >
                   Sobre Nós
                 </Link>
@@ -62,7 +62,7 @@ function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="hover:text-nutrigo-green transition-colors"
+                  className="transition-colors hover:text-nutrigo-green"
                 >
                   Contato
                 </Link>
@@ -71,7 +71,7 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Contato</h4>
+            <h4 className="font-bold text-lg mb-4 text-[#273024]">Contato</h4>
             <ul className="flex flex-col gap-3 text-sm">
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-nutrigo-green" /> (11)
@@ -89,8 +89,8 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-4">Siga-nos</h4>
-            <div className="flex gap-4">
+            <h4 className="font-bold text-lg mb-4 text-[#273024]">Siga-nos</h4>
+            <div className="flex flex-wrap gap-4">
               <a
                 href="https://www.facebook.com/"
                 target="_blank"
@@ -119,17 +119,17 @@ function Footer() {
         <div className="my-8 w-full h-px bg-gradient-to-r from-transparent via-nutrigo-green/40 to-transparent" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-70">
-          <p>© 2026 NutriGo. Todos os direitos reservados.</p>
-          <div className="flex gap-6">
-            <a href="/privacy" className="hover:underline" target="_blank">
+          <p className="text-center md:text-left w-full md:w-auto">© 2026 NutriGo. Todos os direitos reservados.</p>
+          <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-end">
+            <Link to="/privacy" className="transition-colors hover:text-nutrigo-green">
               Política de Privacidade
-            </a>
-            <a href="/terms" className="hover:underline" target="_blank">
+            </Link>
+            <Link to="/terms" className="transition-colors hover:text-nutrigo-green">
               Termos de Serviço
-            </a>
-            <a href="/cookies" className="hover:underline" target="_blank">
+            </Link>
+            <Link to="/cookies" className="transition-colors hover:text-nutrigo-green">
               Cookies
-            </a>
+            </Link>
           </div>
         </div>
       </div>

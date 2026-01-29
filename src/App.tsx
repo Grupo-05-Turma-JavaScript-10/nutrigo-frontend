@@ -21,7 +21,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <main className="min-h-screen bg-nutrigo-cream px-6 pb-14 pt-8 text-[#2f2f2f] sm:px-8">
+      <main className="min-h-screen bg-nutrigo-cream px-6 pb-12 pt-4 text-[#2f2f2f] sm:px-8">
         <Routes>
           <Route path="/" element={
             <>
