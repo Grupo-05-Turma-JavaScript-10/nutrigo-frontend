@@ -1,1 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --color-nutrigo-green: #658c48;
+  --color-nutrigo-brown: #8d5e32;
+  --color-nutrigo-cream: #fbfbf6;
+}
+
+html,
+body,
+#root {
+  font-family: var(--font-sans);
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px; 
+}
